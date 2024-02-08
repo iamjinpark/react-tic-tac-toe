@@ -1,0 +1,13 @@
+.game {
+display: flex;
+    flex-direction: row;
+    gap: 60px;
+    height: 500px;
+  }
+
+.game-info{
+  width: 150px;
+  background-color: yellow;
+}
+
+
