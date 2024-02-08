@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+// 개별 상자 컴포넌트
 function Square({ value, onSquareClick }) {
   return (
     <button className="square" onClick={onSquareClick}>
@@ -8,10 +9,8 @@ function Square({ value, onSquareClick }) {
   );
 }
 
-export default function Board() {
-  const [squares, setSquares] = useState(Array(9).fill(null));
-  const [xIsNext, setXIsNext] = useState(true);
-
+// 9개의 상자 컴포넌트를 합친 하나의 큰 보드 컴포넌트
+function Board({ xIsNext, squares, onPlay }) {
   function handleClick(i) {
     // 이미 값이 있거나 이긴 경우
     if (squares[i] || calculateWinner(squares)) {
@@ -24,11 +23,10 @@ export default function Board() {
     } else {
       nextSquares[i] = "O";
     }
-    setSquares(nextSquares);
-    setXIsNext(!xIsNext);
+    onPlay(nextSquares);
   }
 
-  // 승자 결정하기
+  // 승자 결정하기 (조건)
   const winner = calculateWinner(squares);
   let status;
   if (winner) {
@@ -59,6 +57,7 @@ export default function Board() {
   );
 }
 
+// 승자 결정하기 (함수)
 function calculateWinner(squares) {
   const lines = [
     [0, 1, 2],
@@ -77,4 +76,28 @@ function calculateWinner(squares) {
     }
   }
   return null;
+}
+
+// 게임의 history를 저장하는 최상위 컴포넌트
+export default function Game() {
+  const [xIsNext, setXIsNext] = useState(true);
+  const [history, setHistory] = useState([Array(9).fill(null)]);
+  const currentSquares = history[history.length - 1];
+
+  // board가 업데이트할때 호출할 함수
+  function handlePlay(nextSquares) {
+    setHistory([...history, nextSquares]);
+    setXIsNext(!xIsNext);
+  }
+
+  return (
+    <div className="game">
+      <div className="game-board">
+        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
+      </div>
+      <div className="game-info">
+        <ol>{/*TODO*/}</ol>
+      </div>
+    </div>
+  );
 }
