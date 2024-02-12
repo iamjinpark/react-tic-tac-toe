@@ -1,9 +1,4 @@
 .wrapper {
-  background-color: black;
-  background-image: url(https://lh3.googleusercontent.com/proxy/-MJUpogp7ckIyua1ohZWuputYa9y59qvrn407l6Vm6ivh87hJNt3LlyRp8_J9uxPxRsqhPqYUIfSs6YR0_HoNRl-U_T6bJysB82agiOQPvl298y6Id6otPBm6PpHJLgXbrHiIlhc58KZoBUYgSOsHNjg38hpeA);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
   height: 100vh;
   display: flex;
   flex-direction: row;
