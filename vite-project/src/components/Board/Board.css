@@ -14,7 +14,11 @@
   .status {
     margin-top: 50px;
     color: white;
-    font-size: 45px;
+    font-size: 38px;
     text-align: center;
     font-family:'OKDDUNG';
+  }
+
+  .board-wrapper {
+    width: 450px;
   }
