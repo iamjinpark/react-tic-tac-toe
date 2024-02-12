@@ -68,5 +68,9 @@ function calculateWinner(squares) {
       return squares[a];
     }
   }
+
+  if (!squares.includes(null)) {
+    return "nobody";
+  }
   return null;
 }
